@@ -15,7 +15,7 @@ def featureEngineering(data : RDD[String]): RDD[Vector] = {
 
 	data.map(line => {
 
-	  val values = line.split('§')
+	  val values = line.split('|')
 
 	  val pClass = values(0).toDouble
 	  val age = values(4) match {
@@ -37,7 +37,7 @@ def featureEngineering(data : RDD[String]): RDD[Vector] = {
 }
 
  // Loading data
-val rawData: RDD[String] = sc.textFile("./src/main/resources/data_titanic.csv")
+val rawData: RDD[String] = sc.textFile(".../data_titanic.csv")
 
 // Feature Engineering
 val cleanData: RDD[Vector] = featureEngineering(rawData)

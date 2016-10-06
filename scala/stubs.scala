@@ -16,7 +16,7 @@ def featureEngineering(data : RDD[String]): RDD[Vector] = {
 
 	data.map(line => {
 
-	  val values: Array[String] = line.split('§')
+	  val values: Array[String] = line.split('|')
 
 	  // TODO: transform 'values' which is an array of String to an array of Double to be read by MLlib
 
