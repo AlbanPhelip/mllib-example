@@ -1,5 +1,5 @@
-import numpy as np
-import scipy.sparse as sps
+#import numpy as np
+#import scipy.sparse as sps
 from pyspark.mllib.linalg import Vectors
 from pyspark.mllib.clustering import KMeans, KMeansModel
 
@@ -34,6 +34,7 @@ rawData = sc.textFile(".../data_titanic.csv")
 
 # Feature Engineering
 cleanData = featureEngineering(rawData)
+cleanData.cache()
 
 # Modelling
 model = KMeans.train(cleanData, 3, 50)

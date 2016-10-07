@@ -1,4 +1,5 @@
 import org.apache.spark.mllib.linalg.Vector
+import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.mllib.clustering.{KMeansModel, KMeans}
@@ -41,6 +42,7 @@ val rawData: RDD[String] = sc.textFile(".../data_titanic.csv")
 
 // Feature Engineering
 val cleanData: RDD[Vector] = featureEngineering(rawData)
+cleanData.cache()
 
 // Modelling
 val model: KMeansModel = KMeans.train(cleanData, 2, 50)
