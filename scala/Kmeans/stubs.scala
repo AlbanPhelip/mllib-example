@@ -4,9 +4,7 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.mllib.clustering.{KMeansModel, KMeans}
 
-/**
- * 
- */
+
 def clustersInfo(model: KMeansModel) = {
   val centroids = model.clusterCenters
   centroids.foreach(l => println(s"Class: ${l(0).toInt}, Age: ${l(1).toInt}, Fair: ${l(2).toInt}"))
@@ -19,9 +17,14 @@ def featureEngineering(data : RDD[String]): RDD[Vector] = {
 
 	  val values: Array[String] = line.split('|')
 
-	  // TODO: transform 'values' which is an array of String to an array of Double to be read by MLlib
+    // TODO: transform 'values' to create the following variables
+	  val pClass = ???
+	  val age = ???
+	  val fair = ???
+	  val sibsp = ???
+	  val parch = ???
 
-	  val numericalData: Array[Double] = ???
+	  val numericalData: Array[Double] = Array(pClass, age, fair, sibsp, parch)
 
 	  Vectors.dense(numericalData)
 	})
@@ -29,7 +32,7 @@ def featureEngineering(data : RDD[String]): RDD[Vector] = {
 }
 
 // Loading data
-// TODO: read file ./src/main/resources/data_titanic.csv
+// TODO: read file data_titanic.csv
 
 // Feature Engineering
 // TODO: use the featureEngineering method to get the cleaned data.
@@ -39,6 +42,6 @@ def featureEngineering(data : RDD[String]): RDD[Vector] = {
 
 // Inspect centroid of each cluster
 println("Clusters description")
-// TODO: For each cluster, print the centroid information. You can use the clustersInfo method in
+// TODO: For each cluster, print the centroid information. You can use the clustersInfo method
 
 
